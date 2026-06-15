@@ -1,0 +1,13 @@
+build/
+bin/
+lib/
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+.vscode/
+*.user
+
+*.gba
+*.sav
