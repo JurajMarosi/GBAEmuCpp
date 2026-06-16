@@ -72,5 +72,21 @@ class Decoder {
 
   private:
     static std::array<InstructionType, 4096> lut;
-    static InstructionType determineInsType();
+    static InstructionType determineInsType(uint32_t rawIns);
+    static void decodeMultiply();
+    static void decodeMultiplyLong();
+    static void decodeBranchAndExchange();
+    static void decodeSingleDataSwap();
+    static void decodeHalfwordDataTransferReg();
+    static void decodeHalfwordDataTransferImm();
+    static void decodeSignedDataTransfer();
+    static void decodeDataProcessing();
+    static void decodeLoadStore();
+    static void decodeUndefined();
+    static void decodeBlockDataTransfer();
+    static void decodeBranch();
+    static void decodeCoprocessorDataTransfer();
+    static void decodeCoprocessorDataOperation();
+    static void decodeCoprocessorRegisterTransfer();
+    static void decodeSoftwareInterrupt();
 };
