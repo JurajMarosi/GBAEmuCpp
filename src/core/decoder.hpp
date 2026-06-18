@@ -2,7 +2,24 @@
 #include <array>
 #include <cstdint>
 
-enum class InstructionCond : uint8_t { EQ = 0, NE, CS, CC, MI, PL, VS, VC, HI, LS, GE, LT, GT, LE, AL, NV };
+enum class InstructionCond : uint8_t {
+    EQ = 0,  // 0b0000 - Equal
+    NE = 1,  // 0b0001 - Not Equal
+    CS = 2,  // 0b0010 - Carry Set / Unsigned higher or same
+    CC = 3,  // 0b0011 - Carry Clear / Unsigned lower
+    MI = 4,  // 0b0100 - Minus / Negative
+    PL = 5,  // 0b0101 - Plus / Positive or zero
+    VS = 6,  // 0b0110 - Overflow
+    VC = 7,  // 0b0111 - No Overflow
+    HI = 8,  // 0b1000 - Unsigned higher
+    LS = 9,  // 0b1001 - Unsigned lower or same
+    GE = 10, // 0b1010 - Signed greater than or equal
+    LT = 11, // 0b1011 - Signed less than
+    GT = 12, // 0b1100 - Signed greater than
+    LE = 13, // 0b1101 - Signed less than or equal
+    AL = 14, // 0b1110 - Always
+    NV = 15  // 0b1111 - Never
+};
 
 enum class InstructionType {
     Multiply,

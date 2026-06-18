@@ -1,9 +1,12 @@
 #include "decoder.hpp"
 
+using namespace std;
+
+array<InstructionType, 4096> Decoder::lut;
+
 void Decoder::initLUT() {
     for (uint32_t i = 0; i < 4096; i++) {
         uint32_t fake_instruction = ((i & 0xFF0) << 16) | ((i & 0x00F) << 4);
-
         lut[i] = determineInsType(fake_instruction);
     }
 }
@@ -12,7 +15,9 @@ DecodedInstruction Decoder::decode(uint32_t rawIns) {
     DecodedInstruction decodedIns;
 
     decodedIns.cond = static_cast<InstructionCond>(rawIns >> 28);
-    decodedIns.type = determineInsType(rawIns);
+
+    uint32_t lutIndex = ((rawIns >> 16) & 0xFF0) | ((rawIns >> 4) & 0x00F);
+    decodedIns.type = lut[lutIndex];
 
     switch (decodedIns.type) {
     case InstructionType::DataProcessing:
